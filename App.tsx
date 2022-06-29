@@ -4,7 +4,7 @@ import {ThemeProvider} from 'styled-components/native';
 
 import {Home} from './src/screens/Home';
 
-import {design} from './src/global/theme/color.config';
+import theme from './src/global/theme/theme';
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 
@@ -18,7 +18,7 @@ const App = () => {
   return (
     <SafeAreaView style={backgroundStyle}>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <ThemeProvider theme={design}>
+      <ThemeProvider theme={theme}>
         <Home />
       </ThemeProvider>
     </SafeAreaView>
