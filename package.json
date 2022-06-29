@@ -10,13 +10,16 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@mauron85/react-native-background-geolocation": "^0.6.3",
     "@react-native-community/netinfo": "^9.2.0",
     "axios": "^0.27.2",
     "react": "17.0.2",
     "react-native": "0.68.2",
     "react-native-async-storage": "^0.0.1",
-    "react-native-background-geolocation": "^4.8.1",
+    "react-native-gesture-handler": "^2.5.0",
+    "react-native-responsive-fontsize": "^0.5.1",
     "react-native-svg": "^12.3.0",
+    "react-native-vector-icons": "^9.2.0",
     "styled-components": "^5.3.5"
   },
   "devDependencies": {

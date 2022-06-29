@@ -267,6 +267,10 @@ dependencies {
 
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
 
+    implementation project(":@mauron85_react-native-background-geolocation")
+
+    implementation("com.intentfilter:android-permissions:0.1.7")
+
     debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}") {
         exclude group:'com.facebook.fbjni'
     }
