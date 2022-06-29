@@ -1,11 +1,17 @@
-import React from 'react'
+import React from 'react';
 
-import { Container } from './styles'
+import {Button} from '../../components/Button';
+import {Container} from './styles';
+import {handleStartLocation} from '../../functions/handleStartLocation';
 
 export function Home() {
-    return (
-        <Container>
-
-        </Container>
-    )
+  return (
+    <Container>
+      <Button
+        title="Start Tracking"
+        color="#aaaaa"
+        onPress={handleStartLocation}
+      />
+    </Container>
+  );
 }
