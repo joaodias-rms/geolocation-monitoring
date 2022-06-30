@@ -13,6 +13,7 @@ import com.geolocation.newarchitecture.MainApplicationReactNativeHost;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 import com.marianhello.bgloc.react.BackgroundGeolocationPackage;
+import com.oblador.vectoricons.VectorIconsPackage;
 
 public class MainApplication extends Application implements ReactApplication {
 
@@ -30,6 +31,7 @@ public class MainApplication extends Application implements ReactApplication {
           // Packages that cannot be autolinked yet can be added manually here, for example:
           // packages.add(new MyReactNativePackage());
           new BackgroundGeolocationPackage();
+          new VectorIconsPackage();
           return packages;
         }
 
