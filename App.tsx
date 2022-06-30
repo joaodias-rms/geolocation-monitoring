@@ -1,8 +1,11 @@
 import React from 'react';
-import {SafeAreaView, StatusBar, useColorScheme} from 'react-native';
+import {StatusBar, useColorScheme} from 'react-native';
+import {SafeAreaView} from 'react-native-safe-area-context';
 import {ThemeProvider} from 'styled-components/native';
 
 import {Home} from './src/screens/Home';
+
+import {Routes} from './src/routes';
 
 import theme from './src/global/theme/theme';
 
@@ -16,10 +19,10 @@ const App = () => {
   };
 
   return (
-    <SafeAreaView style={backgroundStyle}>
+    <SafeAreaView>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
       <ThemeProvider theme={theme}>
-        <Home />
+        <Routes />
       </ThemeProvider>
     </SafeAreaView>
   );
