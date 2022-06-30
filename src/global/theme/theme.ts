@@ -1,7 +1,12 @@
 export default {
   colors: {
-    main: '#F00',
-    mainBackground: '#fff',
-    text: '#000',
+    main: '#9000ff',
+    text: '#fff',
+    text_info: '#355',
+  },
+  fonts: {
+    primaryRegular: 'Gantari-Regular',
+    primaryMedium: 'Gantari-Medium',
+    primaryBold: 'Gantari-Bold'
   },
 };
