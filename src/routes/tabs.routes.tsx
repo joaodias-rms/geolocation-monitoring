@@ -4,8 +4,9 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 import {Home} from '../screens/Home';
 import {Profile} from '../screens/Profile';
+import {Tracks} from '../screens/Tracks';
 
-import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 import theme from '../global/theme/theme';
 
 const {Navigator, Screen} = createBottomTabNavigator();
@@ -18,10 +19,11 @@ export function TabRoutes() {
         tabBarActiveTintColor: theme.colors.main,
         tabBarLabelStyle: {
           fontFamily: theme.fonts.primaryRegular,
+          fontSize: 14,
         },
         tabBarStyle: {
+          height: 50,
           padding: Platform.OS === 'ios' ? 20 : 0,
-          marginTop: 15,
         },
       }}
       initialRouteName="Home">
@@ -37,6 +39,15 @@ export function TabRoutes() {
         component={Profile}
         options={{
           tabBarIcon: ({color}) => <Icon name="user" size={24} color={color} />,
+        }}
+      />
+      <Screen
+        name="Tracks"
+        component={Tracks}
+        options={{
+          tabBarIcon: ({color}) => (
+            <Icon name="route" size={24} color={color} />
+          ),
         }}
       />
     </Navigator>
