@@ -9,22 +9,14 @@ import {Routes} from './src/routes';
 
 import theme from './src/global/theme/theme';
 
-import {Colors} from 'react-native/Libraries/NewAppScreen';
-
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
 
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
   return (
-    <SafeAreaView>
+    <ThemeProvider theme={theme}>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <ThemeProvider theme={theme}>
-        <Routes />
-      </ThemeProvider>
-    </SafeAreaView>
+      <Routes />
+    </ThemeProvider>
   );
 };
 
