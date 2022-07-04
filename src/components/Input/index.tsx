@@ -33,6 +33,7 @@ export function Input({iconName, value, ...rest}: InputProps) {
         isFocused={isFocused}
         onFocus={handleIsFocused}
         onBlur={handleInputBlur}
+        {...rest}
       />
     </Container>
   );
