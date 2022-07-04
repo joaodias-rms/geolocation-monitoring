@@ -4,11 +4,13 @@ import {RectButton} from 'react-native-gesture-handler';
 
 interface ButtonProps {
   color: string;
+  height: number;
+  width: number;
 }
 
 export const Container = styled(RectButton)<ButtonProps>`
-  width: 150px;
-  height: 150px;
+  width: ${({width})=>width}px;
+  height: ${({height})=>height}px;
   align-items: center;
   justify-content: center;
   background-color: ${({color}) => color};
@@ -17,7 +19,6 @@ export const Container = styled(RectButton)<ButtonProps>`
 `;
 
 export const Title = styled.Text`
-  margin-top: 8px;
   font-size: ${RFValue(20)}px;
   font-family: ${({theme}) => theme.fonts.primaryRegular};
   color: ${({theme}) => theme.colors.text};
