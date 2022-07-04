@@ -1,0 +1,32 @@
+{
+  "walks": [
+    {
+      "id": "1",
+      "distance": "8",
+      "hours": "1",
+      "minutes": "20",
+      "date": "15/01/2022"
+    },
+    {
+      "id": "2",
+      "distance": "12",
+      "hours": "1",
+      "minutes": "45",
+      "date": "15/02/2022"
+    },
+    {
+      "id": "3",
+      "distance": "2",
+      "hours": "0",
+      "minutes": "45",
+      "date": "08/03/2022"
+    },
+    {
+      "id": "4",
+      "distance": "22",
+      "hours": "4",
+      "minutes": "45",
+      "date": "19/03/2022"
+    }
+  ]
+}
