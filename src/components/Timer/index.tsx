@@ -4,11 +4,16 @@ import {Container, Minute, Second, Hour} from './styles';
 
 import {TimerSeparator} from '../TimerSeparator';
 
-export function Timer() {
+interface TimerProps {
+  isRunning: boolean;
+}
+
+export function Timer({isRunning}: TimerProps) {
   const [seconds, setSeconds] = useState(0);
   const [minutes, setMinutes] = useState(0);
   const [hours, setHours] = useState(0);
   const [customInterval, setCustomInterval] = useState<NodeJS.Timer>();
+  const [running, setRunning] = useState(false);
 
   const handleStartCount = () => {
     setCustomInterval(
@@ -19,6 +24,11 @@ export function Timer() {
   };
 
   const handleStopCount = () => {};
+
+  useEffect(() => {
+    handleStartCount()
+  }, [running])
+  
 
   const changeSeconds = () => {
     setSeconds(prevSeconds => {
@@ -32,12 +42,9 @@ export function Timer() {
     });
   };
 
-//   setTimeout(() => {
-//     handleStartCount();
-//   }, 2000);
 
   return (
-    <Container>
+    <Container isRunning={()=>{setRunning(isRunning)}}>
       <Hour>{`${hours <= 9 ? `0${hours}` : hours}`}</Hour>
       <TimerSeparator />
       <Minute>{`${minutes <= 9 ? `0${minutes}` : minutes}`}</Minute>
