@@ -1,4 +1,10 @@
 import BackgroundGeolocation from '@mauron85/react-native-background-geolocation';
+import NetInfo from '@react-native-community/netinfo';
+import AsyncStorage from '@react-native-community/async-storage';
+import api from '../services/api/api';
+import {getUniqueId} from 'react-native-device-info';
+
+import {locationLatitude, locationLongitude} from '../@types/storage';
 
 export function handleStartLocation() {
   BackgroundGeolocation.configure({
@@ -26,4 +32,41 @@ export function handleStartLocation() {
       foo: 'bar', // you can also add your own properties
     },
   });
+  const OfflineLocation = async () => {
+    const headers = {
+      phoneId: getUniqueId(),
+    };
+    let offlineLocations = [];
+    NetInfo.addEventListener(async state => {
+      if (!state.isConnected) {
+        BackgroundGeolocation.getValidLocations(async response => {
+          const latitude = response.map(lat => lat.latitude);
+          const longitude = response.map(long => long.longitude);
+          AsyncStorage.setItem(locationLatitude, `${latitude}`);
+          AsyncStorage.setItem(locationLongitude, `${longitude}`);
+          response.forEach(item => {
+            offlineLocations.push({
+              latitude: item.latitude,
+              longitude: item.longitude,
+              speed: item.speed,
+              time: item.time,
+              id: item.id,
+            });
+          });
+        });
+      } else if (state.isConnected) {
+        if ((offlineLocations = [])) {
+        } else {
+          const offlineSend = await api.api.put(
+            offlineLocations,
+            headers,
+          );
+          return offlineSend.data;
+        }
+      }
+    });
+  };
+  setInterval(() => {
+    OfflineLocation();
+  }, 5000);
 }
