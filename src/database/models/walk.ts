@@ -4,8 +4,8 @@ import {field} from '@nozbe/watermelondb/decorators';
 export class Walk extends Model {
   static table = 'walks';
 
-  @field('id')
-  id!: string;
+  @field('walk_id')
+  walk_id!: string;
 
   @field('distance')
   distance!: number;
