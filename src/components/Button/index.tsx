@@ -1,5 +1,4 @@
 import React from 'react';
-import {ActivityIndicator} from 'react-native';
 import {RectButtonProps} from 'react-native-gesture-handler';
 
 import {Container, Title} from './styles';
@@ -22,16 +21,10 @@ export function Button({
   height,
   iconName,
   loading,
-  onPress,
   ...rest
 }: ButtonProps) {
   return (
-    <Container
-      color={color}
-      onPress={onPress}
-      {...rest}
-      width={width}
-      height={height}>
+    <Container color={color} width={width} height={height} {...rest}>
       {iconName ? (
         <Icon name={iconName} size={24} color={theme.colors.text} />
       ) : null}

@@ -22,4 +22,5 @@ export const Title = styled.Text`
   font-size: ${RFValue(20)}px;
   font-family: ${({theme}) => theme.fonts.primaryRegular};
   color: ${({theme}) => theme.colors.text};
+  padding-top: 3px;
 `;
