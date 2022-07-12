@@ -15,9 +15,11 @@ import {
 } from './styles';
 
 import {useBottomTabBarHeight} from '@react-navigation/bottom-tabs';
+import {useNavigation} from '@react-navigation/native';
 import {launchImageLibrary} from 'react-native-image-picker';
 
 import {
+  Alert,
   Keyboard,
   KeyboardAvoidingView,
   TouchableWithoutFeedback,
@@ -31,7 +33,7 @@ import theme from '../../global/theme/theme';
 
 export function Profile() {
   const [avatar, setAvatar] = useState('');
-
+  const navigation = useNavigation();
   const handleSelectAvatar = async () => {
     const imageResult = await launchImageLibrary({
       mediaType: 'photo',
@@ -47,13 +49,25 @@ export function Profile() {
     }
   };
 
+  const handleSignOut = () => {
+    Alert.alert('Leaving out?', "If you sign out you'll need to login again", [
+      {text: 'Cancel', onPress: () => {}},
+      {
+        text: 'Leave',
+        onPress: () => {
+          navigation.navigate('Login');
+        },
+      },
+    ]);
+  };
+
   return (
     <KeyboardAvoidingView behavior="position" enabled>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <Container>
           <Header>
             <HeaderTop>
-              <LogoutButton>
+              <LogoutButton onPress={handleSignOut}>
                 <Icon name="power-off" size={24} color={theme.colors.main} />
               </LogoutButton>
             </HeaderTop>
