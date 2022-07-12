@@ -8,6 +8,7 @@ export default {
 
     main_light: '#FDEEDF',
     success: '#03B252',
+    cancel: '#E83F5B',
 
     shape: '#E1E1E8',
     shape_dark: '#29292E',
