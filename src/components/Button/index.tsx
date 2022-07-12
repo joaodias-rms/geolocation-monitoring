@@ -12,6 +12,7 @@ interface ButtonProps extends RectButtonProps {
   loading?: boolean;
   width: number;
   height: number;
+  text_color?: string;
 }
 
 export function Button({
@@ -21,6 +22,7 @@ export function Button({
   height,
   iconName,
   loading,
+  text_color,
   ...rest
 }: ButtonProps) {
   return (
@@ -28,7 +30,7 @@ export function Button({
       {iconName ? (
         <Icon name={iconName} size={24} color={theme.colors.text} />
       ) : null}
-      <Title>{title}</Title>
+      <Title color={text_color}>{title}</Title>
     </Container>
   );
 }
