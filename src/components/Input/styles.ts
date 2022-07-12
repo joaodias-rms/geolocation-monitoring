@@ -1,7 +1,8 @@
 import styled, {css} from 'styled-components/native';
 import {RFValue} from 'react-native-responsive-fontsize';
+import { TextInputProps } from 'react-native';
 
-interface Props {
+interface Props extends TextInputProps{
   isFocused: boolean;
 }
 
