@@ -1,7 +1,7 @@
 import BackgroundGeolocation from '@mauron85/react-native-background-geolocation';
 import NetInfo from '@react-native-community/netinfo';
 import AsyncStorage from '@react-native-community/async-storage';
-import api from '../services/api/api';
+import {api} from '../services/api';
 import {getUniqueId} from 'react-native-device-info';
 
 import {locationLatitude, locationLongitude} from '../@types/storage';
@@ -27,9 +27,8 @@ export function handleStartLocation() {
     },
     // customize post properties
     postTemplate: {
-      lat: '@latitude',
-      lon: '@longitude',
-      foo: 'bar', // you can also add your own properties
+      locationLatitude: '@latitude',
+      locationLongitude: '@longitude',
     },
   });
   const OfflineLocation = async () => {
@@ -57,10 +56,7 @@ export function handleStartLocation() {
       } else if (state.isConnected) {
         if ((offlineLocations = [])) {
         } else {
-          const offlineSend = await api.api.put(
-            offlineLocations,
-            headers,
-          );
+          const offlineSend = await api.put(offlineLocations, headers);
           return offlineSend.data;
         }
       }
