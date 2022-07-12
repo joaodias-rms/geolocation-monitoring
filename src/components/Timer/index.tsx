@@ -3,6 +3,7 @@ import React, {useState, useEffect} from 'react';
 import {Container, Minute, Second, Hour} from './styles';
 
 import {TimerSeparator} from '../TimerSeparator';
+import {Alert} from 'react-native';
 
 interface TimerProps {
   isRunning: boolean;
@@ -26,9 +27,18 @@ export function Timer({isRunning}: TimerProps) {
   const handleStopCount = () => {};
 
   useEffect(() => {
-    handleStartCount()
-  }, [running])
-  
+    let isMounted = true;
+    if (isMounted) {
+      try {
+        handleStartCount();
+      } catch {
+        Alert.alert('Attention', "Can't start tracking at the moment");
+      }
+    }
+    return ()=>{
+      isMounted = false;
+    }
+  }, [running]);
 
   const changeSeconds = () => {
     setSeconds(prevSeconds => {
@@ -42,9 +52,11 @@ export function Timer({isRunning}: TimerProps) {
     });
   };
 
-
   return (
-    <Container isRunning={()=>{setRunning(isRunning)}}>
+    <Container
+      isRunning={() => {
+        setRunning(isRunning);
+      }}>
       <Hour>{`${hours <= 9 ? `0${hours}` : hours}`}</Hour>
       <TimerSeparator />
       <Minute>{`${minutes <= 9 ? `0${minutes}` : minutes}`}</Minute>
