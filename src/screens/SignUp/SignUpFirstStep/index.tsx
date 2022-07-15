@@ -38,16 +38,16 @@ export function SignUpFirstStep() {
     try {
       const schema = Yup.object().shape({
         email: Yup.string()
-          .email('Email inválido')
-          .required('Email é obrigatório'),
-        name: Yup.string().required('Nome é obrigatório'),
+          .email('Invalid email')
+          .required('The email is required'),
+        name: Yup.string().required('The name is required'),
       });
       const data = {name, email};
       await schema.validate(data);
       navigation.navigate('SignUpSecondStep', {user: data});
     } catch (error) {
       if (error instanceof Yup.ValidationError) {
-        return Alert.alert('Opa', error.message);
+        return Alert.alert('Ops!', error.message);
       }
     }
   }
@@ -63,7 +63,7 @@ export function SignUpFirstStep() {
             <HeaderTitle>Let's register some infos</HeaderTitle>
           </Header>
           <FormContainer>
-            <FormTitle>1. Personal Data</FormTitle>
+            <FormTitle>1. User Data</FormTitle>
             <Input
               iconName="user"
               placeholder="Name"

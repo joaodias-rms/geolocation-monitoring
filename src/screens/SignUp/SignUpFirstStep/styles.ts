@@ -22,6 +22,7 @@ export const HeaderTitle = styled.Text`
 `;
 
 export const FormTitle = styled.Text`
+  padding: 0 24px ;
   margin-bottom: 25px;
   font-family: ${({theme}) => theme.fonts.primaryMedium};
   font-size: ${RFValue(18)}px;
